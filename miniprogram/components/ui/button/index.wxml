@@ -1,0 +1,8 @@
+<button
+  class="btn {{type}} {{size}} {{disabled || loading ? 'is-disabled' : ''}}"
+  hover-class="btn-hover"
+  bindtap="onTap"
+>
+  <view wx:if="{{loading}}" class="spinner"></view>
+  <slot></slot>
+</button>

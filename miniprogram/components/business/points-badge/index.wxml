@@ -1,0 +1,4 @@
+<view class="pb" hover-class="pb-press" bindtap="onTap">
+  <view class="pb-heart"><ui-icon name="heart-fill" size="26" /></view>
+  <text class="pb-num">{{value}}</text>
+</view>

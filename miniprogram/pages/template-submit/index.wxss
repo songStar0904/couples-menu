@@ -1,0 +1,48 @@
+.mt {
+  margin-top: 24rpx;
+}
+.list-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+.pick {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 16rpx;
+  border-radius: 20rpx;
+  transition: background 0.15s;
+}
+.pick.on {
+  background: var(--cm-primary-soft);
+}
+.pick-check {
+  font-size: 34rpx;
+  margin-right: 18rpx;
+  color: var(--cm-primary);
+}
+.pick-name {
+  font-size: 29rpx;
+  font-weight: 500;
+}
+.pick-cat {
+  font-size: 22rpx;
+  color: var(--cm-text-2);
+  margin-top: 4rpx;
+}
+.pick-empty {
+  text-align: center;
+  color: var(--cm-text-2);
+  font-size: 26rpx;
+  padding: 40rpx 0;
+}
+.submit {
+  margin-top: 36rpx;
+}
+.tip {
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--cm-text-3);
+  margin-top: 16rpx;
+  line-height: 1.6;
+}

@@ -1,0 +1,54 @@
+.cell {
+  display: flex;
+  align-items: center;
+  padding: 26rpx 28rpx;
+  background: var(--cm-card);
+  transition: transform 0.15s, opacity 0.15s;
+}
+.cell-hover {
+  transform: scale(0.985);
+  opacity: 0.85;
+}
+.cell-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 18rpx;
+  background: var(--cm-primary-soft);
+  color: var(--cm-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 22rpx;
+  flex-shrink: 0;
+}
+.cell-main {
+  flex: 1;
+  min-width: 0;
+}
+.cell-title {
+  font-size: 30rpx;
+  color: var(--cm-text);
+}
+.cell-label {
+  font-size: 24rpx;
+  color: var(--cm-text-2);
+  margin-top: 6rpx;
+}
+.cell-right {
+  display: flex;
+  align-items: center;
+}
+.cell-value {
+  font-size: 26rpx;
+  color: var(--cm-text-2);
+  max-width: 320rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cell-arrow {
+  font-size: 40rpx;
+  color: var(--cm-text-3);
+  margin-left: 8rpx;
+  line-height: 1;
+}

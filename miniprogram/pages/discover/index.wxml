@@ -1,0 +1,40 @@
+<view class="page {{themeClass}}">
+  <view class="search-box">
+    <view class="search-icon"><ui-icon name="search" size="30" /></view>
+    <input class="search-input" placeholder="搜索模板，如：早餐 / 补偿" value="{{keyword}}" bindinput="onSearch" />
+  </view>
+
+  <ui-skeleton wx:if="{{loading}}" type="cards" rows="3" />
+
+  <block wx:else>
+    <view class="section-title">精选模板</view>
+    <block wx:if="{{filtered.length}}">
+      <view class="tpl-grid">
+        <view class="tpl-cell" wx:for="{{filtered}}" wx:key="_id">
+          <template-card tpl="{{item}}" bind:tap="onTplTap" />
+        </view>
+      </view>
+    </block>
+    <ui-empty wx:else icon="search" text="没有找到相关模板" sub="换个关键词试试" />
+
+    <view class="section-title">灵感点滴 <view class="more">心意服务的点子</view></view>
+    <view class="card insp">
+      <view wx:for="{{inspirations}}" wx:key="title" class="insp-item">
+        <view class="insp-icon"><ui-icon name="{{item.icon}}" size="40" /></view>
+        <view class="flex-1">
+          <view class="insp-title">{{item.title}}</view>
+          <view class="insp-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="submit-entry" hover-class="press" bindtap="goSubmit">
+      <view class="submit-entry-row">
+        <view class="submit-entry-ic"><ui-icon name="pencil" size="30" /></view>把我的菜单投稿成模板
+      </view>
+      <text class="submit-entry-sub">审核通过后会出现在精选模板里</text>
+    </view>
+  </block>
+
+  <view class="tab-safe-bottom"></view>
+</view>

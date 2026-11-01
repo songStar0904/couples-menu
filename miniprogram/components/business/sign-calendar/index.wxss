@@ -1,0 +1,59 @@
+.cal-head {
+  display: flex;
+  margin-bottom: 8rpx;
+}
+.cal-week {
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx;
+  color: var(--cm-text-3);
+  padding: 8rpx 0;
+}
+.cal-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.cal-cell {
+  width: calc(100% / 7);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: var(--cm-text);
+  box-sizing: border-box;
+  padding: 6rpx;
+}
+.cal-cell.blank {
+  pointer-events: none;
+}
+.cal-cell.signed {
+  color: var(--cm-on-primary);
+  font-weight: 700;
+}
+.cal-cell.signed::after {
+  content: '';
+  position: absolute;
+}
+.cal-cell.signed {
+  position: relative;
+}
+.cal-cell.signed .cal-mark {
+  width: 64rpx;
+  height: 64rpx;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+  background: var(--cm-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  box-shadow: 0 4rpx 12rpx -4rpx var(--cm-primary);
+}
+.cal-cell.today:not(.signed) {
+  border: 2rpx solid var(--cm-primary);
+  border-radius: 50%;
+  color: var(--cm-primary);
+  font-weight: 600;
+}

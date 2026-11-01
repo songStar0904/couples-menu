@@ -1,0 +1,13 @@
+<view class="tc" hover-class="tc-press" bindtap="onTap">
+  <view class="tc-cover" style="{{coverStyle}}">
+    <view class="tc-emoji"><ui-icon name="{{icon}}" size="84" /></view>
+    <view class="tc-count">{{count}} 道菜品</view>
+  </view>
+  <view class="tc-body">
+    <view class="tc-title ellipsis">{{tpl.title}}</view>
+    <view class="tc-sub ellipsis">{{tpl.subtitle}}</view>
+    <view class="tc-tags" wx:if="{{tpl.tags && tpl.tags.length}}">
+      <text class="tc-tag" wx:for="{{tpl.tags}}" wx:key="*this"># {{item}}</text>
+    </view>
+  </view>
+</view>

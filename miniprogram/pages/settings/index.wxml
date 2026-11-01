@@ -1,0 +1,58 @@
+<view class="page {{themeClass}}">
+  <!-- 主题 -->
+  <view class="card">
+    <view class="set-title"><view class="set-title-ic"><ui-icon name="palette" size="30" /></view>外观</view>
+    <view class="form-label">主题色</view>
+    <ui-segmented options="{{[{label: '暖粉', value: 'pink'}, {label: '雾蓝', value: 'blue'}]}}" value="{{theme}}" bind:change="onThemeChange" />
+  </view>
+
+  <!-- 通知 -->
+  <view class="card mt">
+    <view class="set-title"><view class="set-title-ic"><ui-icon name="bell" size="30" /></view>通知</view>
+    <view class="set-row">
+      <view class="flex-1">
+        <view class="set-row-title">新订单提醒</view>
+        <view class="set-row-sub">TA 点你的菜时通知我（订阅消息）</view>
+      </view>
+      <switch checked="{{notifyOrder}}" color="#FA6E93" bindchange="onNotifyOrder" />
+    </view>
+    <view class="divider"></view>
+    <view class="set-row">
+      <view class="flex-1">
+        <view class="set-row-title">订单进展提醒</view>
+        <view class="set-row-sub">接单 / 完成 / 取消时通知我</view>
+      </view>
+      <switch checked="{{notifyAccept}}" color="#FA6E93" bindchange="onNotifyAccept" />
+    </view>
+    <view class="set-note">提示：需要在微信弹窗中允许订阅，消息才会送达</view>
+  </view>
+
+  <!-- 关系 -->
+  <view class="card mt">
+    <view class="set-title"><view class="set-title-ic"><ui-icon name="heart-fill" size="30" /></view>我们</view>
+    <picker mode="date" value="{{togetherDate}}" bindchange="onAnniversaryChange">
+      <view class="set-row">
+        <view class="flex-1">
+          <view class="set-row-title">在一起纪念日</view>
+          <view class="set-row-sub">{{togetherDate || '设置后首页显示在一起天数'}}</view>
+        </view>
+        <view class="set-arrow">›</view>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 其他 -->
+  <view class="card mt">
+    <view class="set-row" hover-class="press" bindtap="onAbout">
+      <view class="flex-1 set-row-title">关于</view>
+      <view class="set-arrow">›</view>
+    </view>
+    <view class="divider"></view>
+    <view class="set-row" hover-class="press" bindtap="onClearCache">
+      <view class="flex-1 set-row-title">清理本地缓存</view>
+      <view class="set-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

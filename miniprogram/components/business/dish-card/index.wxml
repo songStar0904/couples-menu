@@ -1,0 +1,17 @@
+<view class="dc" hover-class="dc-press" bindtap="onTap">
+  <view class="dc-media">
+    <image wx:if="{{dish.image}}" src="{{dish.image}}" mode="aspectFill" class="dc-img" lazy-load="{{true}}" />
+    <view wx:else class="dc-emoji"><ui-icon name="{{icon}}" size="56" /></view>
+  </view>
+  <view class="dc-main">
+    <view class="dc-name ellipsis">{{dish.name}}</view>
+    <view wx:if="{{dish.desc}}" class="dc-desc ellipsis">{{dish.desc}}</view>
+    <view class="dc-meta">
+      <ui-tag size="sm" type="soft">{{dish.category}}</ui-tag>
+    </view>
+  </view>
+  <view class="dc-right">
+    <ui-price wx:if="{{showPrice}}" value="{{dish.price}}" free="{{!dish.price}}" />
+    <view wx:if="{{actionText}}" class="dc-btn" hover-class="dc-press" catchtap="onAction">{{actionText}}</view>
+  </view>
+</view>

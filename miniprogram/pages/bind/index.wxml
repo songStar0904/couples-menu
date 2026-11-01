@@ -1,0 +1,67 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="2" />
+
+  <block wx:else>
+    <!-- 已绑定：展示关系卡 -->
+    <block wx:if="{{couple}}">
+      <view class="bound-card">
+        <view class="bd-avatars">
+          <view class="bd-av"><ui-icon name="user" size="56" /></view>
+          <view class="bd-heart"><ui-icon name="heart-fill" size="48" /></view>
+          <view class="bd-av"><ui-icon name="user" size="56" /></view>
+        </view>
+        <view class="bd-title">我们的专属小馆</view>
+        <view class="bd-days">在一起第 {{days}} 天</view>
+        <view class="bd-partner">主厨搭档：{{partner.nickname || '还没有昵称'}}</view>
+      </view>
+      <view class="unbind">
+        <ui-button type="danger" bind:tap="onUnbind">解除绑定</ui-button>
+      </view>
+    </block>
+
+    <!-- 未绑定 -->
+    <block wx:else>
+      <view class="hero"><ui-icon name="users" size="120" /></view>
+      <view class="hero-title">和 TA 开一家专属小馆</view>
+      <view class="hero-sub">绑定后可以互点菜单、送出心意服务</view>
+
+      <!-- 我的邀请口令 -->
+      <view class="card mt32">
+        <view class="blk-title">第一步：把口令发给 TA</view>
+        <block wx:if="{{invite}}">
+          <view class="code">{{invite.code}}</view>
+          <view class="code-expire">
+            <view class="code-expire-ic"><ui-icon name="alarm" size="22" /></view>{{invite.expireInMin}} 分钟内有效
+          </view>
+          <view class="code-actions">
+            <ui-button size="sm" type="soft" bind:tap="onCopyCode">复制口令</ui-button>
+            <ui-button size="sm" type="ghost" bind:tap="onCreateInvite">重新生成</ui-button>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="invite-empty">
+            <ui-button size="md" bind:tap="onCreateInvite">生成我的邀请口令</ui-button>
+          </view>
+        </block>
+      </view>
+
+      <!-- 输入口令 -->
+      <view class="card mt">
+        <view class="blk-title">第二步：或输入 TA 的口令</view>
+        <view class="code-input-row">
+          <input
+            class="code-input"
+            value="{{inputCode}}"
+            placeholder="6 位口令"
+            maxlength="6"
+            bindinput="onInputCode"
+          />
+        </view>
+        <ui-button loading="{{binding}}" bind:tap="onBind">绑定</ui-button>
+      </view>
+    </block>
+  </block>
+
+  <ui-dialog id="dialog" />
+  <view class="safe-bottom"></view>
+</view>

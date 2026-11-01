@@ -1,0 +1,10 @@
+<view class="uc">
+  <view wx:if="{{title}}" class="uc-head">
+    <view class="flex1">
+      <view class="uc-title">{{title}}</view>
+      <view wx:if="{{subtitle}}" class="uc-sub">{{subtitle}}</view>
+    </view>
+    <slot name="action"></slot>
+  </view>
+  <slot></slot>
+</view>

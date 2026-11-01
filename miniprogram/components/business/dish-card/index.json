@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "ui-tag": "/components/ui/tag/index",
+    "ui-price": "/components/ui/price/index"
+  }
+}

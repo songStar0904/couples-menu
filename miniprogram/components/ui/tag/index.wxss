@@ -1,0 +1,39 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  line-height: 1.4;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.sm {
+  padding: 2rpx 14rpx;
+  font-size: 20rpx;
+}
+.primary {
+  background: var(--cm-gradient);
+  color: var(--cm-on-primary);
+}
+.soft {
+  background: var(--cm-primary-soft);
+  color: var(--cm-primary);
+}
+.success {
+  background: rgba(76, 195, 165, 0.14);
+  color: var(--cm-success);
+}
+.warning {
+  background: rgba(255, 162, 75, 0.14);
+  color: var(--cm-warning);
+}
+.danger {
+  background: rgba(244, 101, 95, 0.12);
+  color: var(--cm-danger);
+}
+.line {
+  background: transparent;
+  border: 2rpx solid var(--cm-line);
+  color: var(--cm-text-2);
+}

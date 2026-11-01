@@ -1,0 +1,7 @@
+<view class="price {{size}}">
+  <block wx:if="{{free}}">免费</block>
+  <block wx:else>
+    <view class="heart"><ui-icon name="heart-fill" size="1em" /></view>
+    <text class="num">{{value}}</text>
+  </block>
+</view>

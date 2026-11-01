@@ -1,0 +1,50 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="2" />
+  <block wx:else>
+    <view class="card">
+      <view class="row">
+        <view class="oc-media-box">
+          <image wx:if="{{dish.image}}" src="{{dish.image}}" mode="aspectFill" class="dish-img" />
+          <view wx:else class="dish-emoji"><ui-icon name="{{dish.type === 'service' ? 'gift' : 'pan'}}" size="52" /></view>
+        </view>
+        <view class="flex-1 dish-main">
+          <view class="dish-name">{{dish.name}}</view>
+          <view class="dish-cat">{{dish.category}}</view>
+        </view>
+        <ui-price value="{{dish.price}}" size="lg" free="{{!dish.price}}" />
+      </view>
+      <view wx:if="{{dish.desc}}" class="dish-desc">{{dish.desc}}</view>
+    </view>
+
+    <view class="card mt">
+      <view class="form-label">期望日期</view>
+      <picker range="{{dateLabels}}" value="{{dateIndex}}" bindchange="onDateChange">
+        <view class="input-box row">
+          <view class="flex-1 row">
+            <view class="date-ic"><ui-icon name="calendar" size="28" /></view>{{dateLabels[dateIndex]}}
+          </view>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+
+      <view class="form-label">想对主厨说（可选）</view>
+      <textarea class="textarea-box" value="{{note}}" placeholder="如：少放辣 / 今天辛苦了~" maxlength="50" bindinput="onNote" />
+    </view>
+
+    <view class="card mt row">
+      <view class="flex-1">
+        <view class="pay-title">需支付</view>
+        <view class="pay-sub">当前余额 {{balance}}</view>
+      </view>
+      <ui-price value="{{dish.price}}" size="xl" free="{{!dish.price}}" />
+    </view>
+
+    <view class="submit">
+      <ui-button size="lg" loading="{{submitting}}" bind:tap="onSubmit">下单</ui-button>
+      <view class="pay-tip">下单即从心意值余额中扣除，未接单取消全额退还</view>
+    </view>
+  </block>
+
+  <ui-dialog id="dialog" />
+  <view class="safe-bottom"></view>
+</view>

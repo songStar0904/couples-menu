@@ -1,0 +1,37 @@
+.seg {
+  position: relative;
+  display: flex;
+  background: var(--cm-bg);
+  border-radius: 999rpx;
+  padding: 6rpx;
+  height: 76rpx;
+  box-sizing: border-box;
+}
+.thumb {
+  position: absolute;
+  top: 6rpx;
+  bottom: 6rpx;
+  left: 0;
+  border-radius: 999rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(60, 40, 60, 0.1);
+  transition: transform 0.24s ease;
+}
+.seg-item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: var(--cm-text-2);
+  transition: color 0.2s;
+  z-index: 1;
+}
+.seg-item.on {
+  color: var(--cm-primary);
+  font-weight: 600;
+}
+.seg-press {
+  opacity: 0.7;
+}

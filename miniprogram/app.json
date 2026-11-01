@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/menu/index",
+    "pages/discover/index",
+    "pages/order/index",
+    "pages/profile/index",
+    "pages/dish-edit/index",
+    "pages/order-confirm/index",
+    "pages/order-detail/index",
+    "pages/bind/index",
+    "pages/points/index",
+    "pages/settings/index",
+    "pages/profile-edit/index",
+    "pages/template-detail/index",
+    "pages/template-submit/index",
+    "pages/demo/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "情侣菜单",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F8F7FA",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#9A97A6",
+    "selectedColor": "#FA6E93",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "首页" },
+      { "pagePath": "pages/menu/index", "text": "菜单" },
+      { "pagePath": "pages/discover/index", "text": "发现" },
+      { "pagePath": "pages/order/index", "text": "订单" },
+      { "pagePath": "pages/profile/index", "text": "我的" }
+    ]
+  },
+  "usingComponents": {
+    "ui-icon": "/components/ui/icon/index",
+    "ui-button": "/components/ui/button/index",
+    "ui-cell": "/components/ui/cell/index",
+    "ui-card": "/components/ui/card/index",
+    "ui-dialog": "/components/ui/dialog/index",
+    "ui-empty": "/components/ui/empty/index",
+    "ui-skeleton": "/components/ui/skeleton/index",
+    "ui-tag": "/components/ui/tag/index",
+    "ui-badge": "/components/ui/badge/index",
+    "ui-price": "/components/ui/price/index",
+    "ui-stepper": "/components/ui/stepper/index",
+    "ui-segmented": "/components/ui/segmented/index",
+    "dish-card": "/components/business/dish-card/index",
+    "order-card": "/components/business/order-card/index",
+    "dynamics-item": "/components/business/dynamics-item/index",
+    "template-card": "/components/business/template-card/index",
+    "sign-calendar": "/components/business/sign-calendar/index",
+    "points-badge": "/components/business/points-badge/index"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

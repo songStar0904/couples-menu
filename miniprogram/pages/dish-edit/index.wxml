@@ -1,0 +1,57 @@
+<view class="page {{themeClass}}">
+  <view class="card">
+    <view class="form-label">类型</view>
+    <ui-segmented options="{{typeOptions}}" value="{{dish.type}}" bind:change="onTypeChange" />
+
+    <view class="form-label">封面图（可不传，默认用分类图标）</view>
+    <view class="img-row">
+      <view wx:if="{{dish.image}}" class="img-box">
+        <image src="{{dish.image}}" mode="aspectFill" class="img-preview" />
+        <view class="img-del" catchtap="onRemoveImage"><ui-icon name="x" size="22" /></view>
+      </view>
+      <view wx:else class="img-add" hover-class="press" bindtap="onChooseImage">
+        <view class="img-add-icon"><ui-icon name="camera" size="44" /></view>
+        <text class="img-add-text">上传</text>
+      </view>
+    </view>
+
+    <view class="form-label">名称</view>
+    <input class="input-box" value="{{dish.name}}" placeholder="如：番茄炒蛋 / 一个拥抱" maxlength="20" bindinput="onName" />
+
+    <view class="form-label">分类</view>
+    <picker range="{{categories}}" bindchange="onCategoryChange">
+      <view class="input-box row">
+        <view class="flex-1">{{dish.category || '选择分类'}}</view>
+        <text class="picker-arrow">›</text>
+      </view>
+    </picker>
+    <view class="cat-add" bindtap="onAddCategory">＋ 新建分类</view>
+
+    <view class="form-label">心意值定价 <text class="form-hint">0 为免费的心意</text></view>
+    <view class="row">
+      <ui-stepper value="{{dish.price}}" min="0" max="999" bind:change="onPriceChange" />
+      <view class="price-hint">
+        <view class="price-hint-ic"><ui-icon name="heart-fill" size="24" /></view>{{dish.price}} 心意值
+      </view>
+    </view>
+
+    <view class="form-label">描述</view>
+    <textarea class="textarea-box" value="{{dish.desc}}" placeholder="介绍这道菜 / 这份心意的诚意之处" maxlength="100" bindinput="onDesc" />
+
+    <view class="form-label">上架状态</view>
+    <view class="row">
+      <switch checked="{{dish.status === 'on'}}" color="#FA6E93" bindchange="onStatusChange" />
+      <text class="switch-label">{{dish.status === 'on' ? '上架中，TA 可以点单' : '已下架'}}</text>
+    </view>
+  </view>
+
+  <view class="save-btn">
+    <ui-button size="lg" loading="{{saving}}" bind:tap="onSave">保存</ui-button>
+  </view>
+  <view wx:if="{{isEdit}}" class="del-btn">
+    <ui-button type="danger" bind:tap="onDelete">删除这道菜品</ui-button>
+  </view>
+
+  <ui-dialog id="dialog" />
+  <view class="safe-bottom"></view>
+</view>

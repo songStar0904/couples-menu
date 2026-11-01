@@ -1,0 +1,29 @@
+.price {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cm-primary);
+  font-weight: 600;
+  line-height: 1;
+}
+.heart {
+  display: flex;
+  align-items: center;
+  font-size: 0.72em;
+  margin-right: 6rpx;
+}
+.sm .num,
+.sm {
+  font-size: 24rpx;
+}
+.md .num,
+.md {
+  font-size: 30rpx;
+}
+.lg .num,
+.lg {
+  font-size: 36rpx;
+}
+.xl .num,
+.xl {
+  font-size: 44rpx;
+}

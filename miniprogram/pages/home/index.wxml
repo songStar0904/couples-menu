@@ -1,0 +1,97 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="3" />
+
+  <block wx:else>
+    <!-- 顶部问候 -->
+    <view class="head">
+      <view class="head-avatar">
+        <image wx:if="{{user.avatar}}" src="{{user.avatar}}" class="head-img" />
+        <view wx:else class="head-emoji"><ui-icon name="user" size="48" /></view>
+      </view>
+      <view class="flex-1 head-main">
+        <view class="head-greet">{{greeting}}，{{user.nickname || '小可爱'}}</view>
+        <view class="head-sub">欢迎回到你们的专属小馆</view>
+      </view>
+      <points-badge value="{{points}}" bind:tap="goPoints" />
+    </view>
+
+    <!-- 未绑定伴侣 -->
+    <block wx:if="{{!couple}}">
+      <ui-empty icon="users" text="还没有和 TA 绑定" sub="生成你的邀请口令，把专属小馆送给 TA">
+        <ui-button size="sm" bind:tap="goBind">去绑定</ui-button>
+      </ui-empty>
+    </block>
+
+    <block wx:else>
+      <!-- 在一起天数卡 -->
+      <view class="together">
+        <view class="tg-avatars">
+          <view class="tg-av">
+            <image wx:if="{{user.avatar}}" src="{{user.avatar}}" class="tg-img" />
+            <view wx:else class="tg-img tg-emoji-fallback"><ui-icon name="user" size="48" /></view>
+          </view>
+          <view class="tg-av tg-av-2">
+            <image wx:if="{{partner && partner.avatar}}" src="{{partner.avatar}}" class="tg-img" />
+            <view wx:else class="tg-img tg-emoji-fallback"><ui-icon name="user" size="48" /></view>
+          </view>
+        </view>
+        <view class="tg-days">
+          <text class="tg-num">{{days}}</text>
+          <text class="tg-unit">天</text>
+        </view>
+        <view class="tg-label">我们在一起的日子</view>
+        <picker mode="date" value="{{togetherDate}}" bindchange="onAnniversaryChange">
+          <view class="tg-date">
+            <view class="tg-date-ic"><ui-icon name="calendar" size="24" /></view>{{togetherDate}}（点击修改纪念日）
+          </view>
+        </picker>
+        <view wx:if="{{todaySigned}}" class="tg-signed">今日已签到 ✓</view>
+        <view wx:else class="tg-sign" hover-class="press" bindtap="onSign">今日签到 +5 心意值</view>
+      </view>
+
+      <!-- 待办提醒 -->
+      <view wx:if="{{sellerPending > 0}}" class="todo" hover-class="press" bindtap="goOrder">
+        <view class="todo-icon"><ui-icon name="bell" size="36" /></view>
+        <text class="todo-text">有 {{sellerPending}} 个新订单等你接单</text>
+        <view class="todo-arrow"><ui-icon name="chevron-right" size="28" /></view>
+      </view>
+    </block>
+
+    <!-- 今日推荐 -->
+    <view class="section-title">
+      今日推荐
+      <view class="more" bindtap="goMenu">全部菜单 ›</view>
+    </view>
+    <view wx:if="{{couple && recommends.length}}">
+      <scroll-view scroll-x class="rec-scroll" enhanced show-scrollbar="{{false}}">
+        <view
+          wx:for="{{recommends}}"
+          wx:key="_id"
+          class="rec-card"
+          hover-class="press"
+          data-id="{{item._id}}"
+          bindtap="goOrderConfirm"
+        >
+          <image wx:if="{{item.image}}" src="{{item.image}}" mode="aspectFill" class="rec-img" />
+          <view wx:else class="rec-emoji"><ui-icon name="{{item.icon}}" size="72" /></view>
+          <view class="rec-name ellipsis">{{item.name}}</view>
+          <view class="rec-price">
+            <view class="rec-price-ic"><ui-icon name="heart-fill" size="22" /></view>{{item.price}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view wx:else class="card rec-empty">
+      <view class="rec-empty-text">{{couple ? 'TA 的菜单还空着，去发现页找份模板送给 TA' : '绑定伴侣后可以看 TA 的菜单'}}</view>
+    </view>
+
+    <!-- 我们的动态 -->
+    <view class="section-title">我们的动态</view>
+    <ui-card wx:if="{{dynamics.length}}">
+      <dynamics-item wx:for="{{dynamics}}" wx:key="_id" item="{{item}}" />
+    </ui-card>
+    <view wx:else class="card dyn-empty">还没有动态，从点一份 TA 的菜开始吧</view>
+  </block>
+
+  <view class="tab-safe-bottom"></view>
+</view>

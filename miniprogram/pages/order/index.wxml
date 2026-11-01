@@ -1,0 +1,30 @@
+<view class="page {{themeClass}}">
+  <view class="seg-wrap">
+    <ui-segmented options="{{['我点的', '点我的']}}" value="{{tab}}" bind:change="onTabChange" />
+  </view>
+
+  <ui-skeleton wx:if="{{loading}}" type="list" rows="4" />
+
+  <block wx:else>
+    <block wx:if="{{list.length}}">
+      <order-card
+        wx:for="{{list}}"
+        wx:key="_id"
+        order="{{item}}"
+        role="{{tab === 'bought' ? 'buyer' : 'seller'}}"
+        bind:tap="onItemTap"
+        bind:action="onAction"
+      />
+      <view wx:if="{{finished}}" class="loading-foot">— 到底啦 —</view>
+    </block>
+    <ui-empty
+      wx:else
+      icon="receipt"
+      text="{{tab === 'bought' ? '还没有点过单' : '还没有收到订单'}}"
+      sub="{{tab === 'bought' ? '去 TA 的菜单挑一份喜欢的吧' : '等 TA 来点你的拿手菜'}}"
+    />
+  </block>
+
+  <ui-dialog id="dialog" />
+  <view class="tab-safe-bottom"></view>
+</view>

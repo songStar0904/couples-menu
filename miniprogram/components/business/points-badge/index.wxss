@@ -1,0 +1,22 @@
+.pb {
+  display: inline-flex;
+  align-items: center;
+  background: var(--cm-primary-soft);
+  border-radius: 999rpx;
+  padding: 10rpx 24rpx;
+  transition: transform 0.15s;
+}
+.pb-press {
+  transform: scale(0.94);
+}
+.pb-heart {
+  display: flex;
+  align-items: center;
+  color: var(--cm-primary);
+  margin-right: 8rpx;
+}
+.pb-num {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: var(--cm-primary);
+}

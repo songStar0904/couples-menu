@@ -1,0 +1,10 @@
+<view class="di">
+  <view class="di-icon"><ui-icon name="{{icon}}" size="36" /></view>
+  <view class="di-main">
+    <view class="di-text">
+      <text class="di-actor">{{item.actorName}}</text>
+      {{item.text}}
+    </view>
+    <view class="di-time">{{timeText}}</view>
+  </view>
+</view>

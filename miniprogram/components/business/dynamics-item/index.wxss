@@ -1,0 +1,35 @@
+.di {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx 0;
+}
+.di-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: var(--cm-primary-soft);
+  color: var(--cm-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18rpx;
+  flex-shrink: 0;
+}
+.di-main {
+  flex: 1;
+  min-width: 0;
+}
+.di-text {
+  font-size: 28rpx;
+  color: var(--cm-text);
+  line-height: 1.5;
+}
+.di-actor {
+  font-weight: 600;
+  margin-right: 8rpx;
+}
+.di-time {
+  font-size: 22rpx;
+  color: var(--cm-text-3);
+  margin-top: 4rpx;
+}

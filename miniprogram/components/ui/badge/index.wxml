@@ -1,0 +1,3 @@
+<view wx:if="{{dot || count > 0}}" class="badge {{dot ? 'dot' : ''}}">
+  <block wx:if="{{!dot}}">{{text}}</block>
+</view>

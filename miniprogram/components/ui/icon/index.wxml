@@ -1,0 +1,1 @@
+<view wx:if="{{name}}" class="uii uii-{{name}}" style="{{styleText}}"></view>

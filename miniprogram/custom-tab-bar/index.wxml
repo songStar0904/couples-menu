@@ -1,0 +1,15 @@
+<view class="bar {{themeClass}}">
+  <view class="bar-inner">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="path"
+      class="bar-item {{selected === index ? 'on' : ''}}"
+      data-index="{{index}}"
+      hover-class="press"
+      bindtap="tap"
+    >
+      <view class="bar-icon"><ui-icon name="{{item.icon}}" size="44" /></view>
+      <view class="bar-text">{{item.text}}</view>
+    </view>
+  </view>
+</view>

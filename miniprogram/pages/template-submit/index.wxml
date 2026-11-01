@@ -1,0 +1,31 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="2" />
+  <block wx:else>
+    <view class="card">
+      <view class="form-label">模板名称</view>
+      <input class="input-box" value="{{title}}" placeholder="如：我的周末早餐计划" maxlength="20" bindinput="onTitle" />
+      <view class="form-label">模板介绍</view>
+      <textarea class="textarea-box" value="{{desc}}" placeholder="这份模板适合什么场景？" maxlength="80" bindinput="onDesc" />
+    </view>
+
+    <view class="card mt">
+      <view class="list-title">选择要分享的菜品（{{myDishes.length}}）</view>
+      <block wx:if="{{myDishes.length}}">
+        <view wx:for="{{myDishes}}" wx:key="_id" class="pick {{item.checked ? 'on' : ''}}" data-index="{{index}}" bindtap="onToggle">
+          <text class="pick-check">{{item.checked ? '☑' : '☐'}}</text>
+          <view class="flex-1">
+            <view class="pick-name">{{item.name}}</view>
+            <view class="pick-cat">{{item.category}} · ❤ {{item.price}}</view>
+          </view>
+        </view>
+      </block>
+      <view wx:else class="pick-empty">还没有上架的菜品，先去「我的菜单」创建吧</view>
+    </view>
+
+    <view class="submit">
+      <ui-button size="lg" loading="{{submitting}}" bind:tap="onSubmit">提交投稿</ui-button>
+      <view class="tip">投稿通过审核后会出现在「精选模板」中，署名为你的昵称</view>
+    </view>
+  </block>
+  <view class="safe-bottom"></view>
+</view>

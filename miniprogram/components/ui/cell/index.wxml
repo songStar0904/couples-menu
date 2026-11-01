@@ -1,0 +1,12 @@
+<view class="cell" hover-class="{{hoverable ? 'cell-hover' : 'none'}}" bindtap="onTap">
+  <view wx:if="{{icon}}" class="cell-icon"><ui-icon name="{{icon}}" size="36" /></view>
+  <view class="cell-main">
+    <view class="cell-title">{{title}}</view>
+    <view wx:if="{{label}}" class="cell-label">{{label}}</view>
+  </view>
+  <view class="cell-right">
+    <slot name="right"></slot>
+  </view>
+  <view wx:if="{{value}}" class="cell-value">{{value}}</view>
+  <view wx:if="{{arrow}}" class="cell-arrow">›</view>
+</view>

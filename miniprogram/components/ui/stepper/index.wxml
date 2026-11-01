@@ -1,0 +1,5 @@
+<view class="stepper">
+  <view class="op {{value <= min ? 'off' : ''}}" hover-class="op-press" bindtap="onMinus">−</view>
+  <view class="val">{{value}}</view>
+  <view class="op {{value >= max ? 'off' : ''}}" hover-class="op-press" bindtap="onPlus">＋</view>
+</view>

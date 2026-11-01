@@ -1,0 +1,23 @@
+<view class="page {{themeClass}}">
+  <view class="card">
+    <view class="form-label">头像</view>
+    <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+      <image wx:if="{{avatar}}" src="{{avatar}}" class="avatar-img" mode="aspectFill" />
+      <view wx:else class="avatar-empty">
+        <text class="avatar-emoji">📷</text>
+        <text class="avatar-tip">选择头像</text>
+      </view>
+    </button>
+
+    <view class="form-label">昵称</view>
+    <input class="input-box" type="nickname" value="{{nickname}}" placeholder="TA 会看到这个名字" maxlength="12" bindinput="onNickname" />
+
+    <view class="form-label">个性签名</view>
+    <input class="input-box" value="{{motto}}" placeholder="一句话介绍自己" maxlength="30" bindinput="onMotto" />
+  </view>
+
+  <view class="save">
+    <ui-button size="lg" loading="{{saving}}" bind:tap="onSave">保存</ui-button>
+  </view>
+  <view class="safe-bottom"></view>
+</view>

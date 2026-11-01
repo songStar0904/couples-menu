@@ -1,0 +1,11 @@
+<view wx:if="{{show}}" class="dlg-mask" catchtap="onMask" catchtouchmove="noop">
+  <view class="dlg" catchtap="noop">
+    <view wx:if="{{title}}" class="dlg-title">{{title}}</view>
+    <view wx:if="{{content}}" class="dlg-content">{{content}}</view>
+    <slot></slot>
+    <view class="dlg-btns">
+      <view wx:if="{{showCancel}}" class="dlg-btn cancel" hover-class="dlg-press" bindtap="onCancel">{{cancelText}}</view>
+      <view class="dlg-btn confirm" hover-class="dlg-press" bindtap="onConfirm">{{confirmText}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="2" />
+  <block wx:else>
+    <!-- 用户卡 -->
+    <view class="user-card" hover-class="press" bindtap="goEdit">
+      <view class="uc-avatar">
+        <image wx:if="{{user.avatar}}" src="{{user.avatar}}" class="uc-img" />
+        <view wx:else class="uc-emoji"><ui-icon name="user" size="48" /></view>
+      </view>
+      <view class="flex-1 uc-main">
+        <view class="uc-name">{{user.nickname || '点击设置昵称'}}</view>
+        <view class="uc-motto">{{user.motto || '这个人很懒，什么都没写'}}</view>
+      </view>
+      <view class="uc-edit"><ui-icon name="pencil" size="32" /></view>
+    </view>
+
+    <!-- 情侣卡 -->
+    <view wx:if="{{couple}}" class="card mt row" hover-class="press" bindtap="goBind">
+      <view class="cp-icon"><ui-icon name="heart-fill" size="40" /></view>
+      <view class="flex-1 cp-main">
+        <view class="cp-title">在一起第 {{days}} 天</view>
+        <view class="cp-sub">与 {{partner.nickname || 'TA'}} 的专属小馆</view>
+      </view>
+      <view class="cp-arrow"><ui-icon name="chevron-right" size="28" /></view>
+    </view>
+    <view wx:else class="card mt row" hover-class="press" bindtap="goBind">
+      <view class="cp-icon"><ui-icon name="users" size="40" /></view>
+      <view class="flex-1 cp-main">
+        <view class="cp-title">还没有绑定伴侣</view>
+        <view class="cp-sub">邀请 TA 一起开一家专属小馆</view>
+      </view>
+      <view class="cp-go">去绑定</view>
+    </view>
+
+    <!-- 心意值卡 -->
+    <view class="card mt row" hover-class="press" bindtap="goPoints">
+      <view class="cp-icon"><ui-icon name="gift" size="40" /></view>
+      <view class="flex-1 cp-main">
+        <view class="cp-title">心意值</view>
+        <view class="cp-sub">签到、点单、完成订单都会流动</view>
+      </view>
+      <view class="cp-points">
+        <view class="cp-points-ic"><ui-icon name="heart-fill" size="26" /></view>{{points}}
+      </view>
+      <view class="cp-arrow"><ui-icon name="chevron-right" size="28" /></view>
+    </view>
+
+    <!-- 功能列表 -->
+    <view class="card mt menu-list">
+      <ui-cell icon="book" title="我的菜单" arrow bind:tap="goMenu" />
+      <view class="divider"></view>
+      <ui-cell icon="receipt" title="我的订单" arrow bind:tap="goOrder" />
+      <view class="divider"></view>
+      <ui-cell icon="settings" title="设置" arrow bind:tap="goSettings" />
+      <view class="divider"></view>
+      <ui-cell icon="sparkle" title="组件预览" label="设计系统一览" arrow bind:tap="goDemo" />
+      <view class="divider"></view>
+      <button class="share-btn" open-type="share">
+        <ui-cell icon="mail" title="分享给 TA" label="邀请 TA 加入你们的小馆" arrow hoverable="{{false}}" />
+      </button>
+    </view>
+
+    <view class="version">情侣菜单 · v1.0</view>
+  </block>
+  <view class="tab-safe-bottom"></view>
+</view>

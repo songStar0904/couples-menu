@@ -1,0 +1,24 @@
+<view class="sk">
+  <block wx:if="{{type === 'list'}}">
+    <view class="sk-row" wx:for="{{list}}" wx:key="*this">
+      <view class="sk-avatar shimmer"></view>
+      <view class="flex1">
+        <view class="sk-line w60 shimmer"></view>
+        <view class="sk-line w40 shimmer"></view>
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{type === 'cards'}}">
+    <view class="sk-card" wx:for="{{list}}" wx:key="*this">
+      <view class="sk-media shimmer"></view>
+      <view class="sk-line w80 shimmer"></view>
+      <view class="sk-line w50 shimmer"></view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="sk-hero shimmer"></view>
+    <view class="sk-line w90 shimmer"></view>
+    <view class="sk-line w70 shimmer"></view>
+    <view class="sk-line w50 shimmer"></view>
+  </block>
+</view>

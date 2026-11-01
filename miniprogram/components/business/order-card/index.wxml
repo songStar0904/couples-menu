@@ -1,0 +1,43 @@
+<view class="oc" hover-class="oc-press" bindtap="onTap">
+  <view class="oc-head">
+    <view class="oc-counter">
+      <image wx:if="{{other.avatar}}" src="{{other.avatar}}" class="oc-avatar" />
+      <view wx:else class="oc-avatar oc-avatar-emoji"><ui-icon name="user" size="32" /></view>
+      <text class="oc-other">{{other.name || 'TA'}}</text>
+      <text class="oc-role">{{role === 'buyer' ? '的主厨' : '点的单'}}</text>
+    </view>
+    <ui-tag type="{{statusInfo.tag}}">
+      <view class="oc-tag-inner">
+        <view class="oc-tag-ic"><ui-icon name="{{statusInfo.icon}}" size="24" /></view>{{statusInfo.text}}
+      </view>
+    </ui-tag>
+  </view>
+  <view class="oc-body">
+    <view class="oc-media">
+      <image wx:if="{{order.dishImage}}" src="{{order.dishImage}}" mode="aspectFill" class="oc-img" />
+      <view wx:else class="oc-emoji"><ui-icon name="{{order.dishType === 'service' ? 'gift' : 'pan'}}" size="48" /></view>
+    </view>
+    <view class="oc-main">
+      <view class="oc-name ellipsis">{{order.dishName}}</view>
+      <view class="oc-note ellipsis" wx:if="{{order.note}}">
+        <view class="oc-note-icon"><ui-icon name="pencil" size="22" /></view>{{order.note}}
+      </view>
+      <view class="oc-time">{{timeText}}</view>
+    </view>
+    <view class="oc-price">
+      <ui-price value="{{order.price}}" free="{{!order.price}}" />
+    </view>
+  </view>
+  <view wx:if="{{actions.length}}" class="oc-actions">
+    <view
+      wx:for="{{actions}}"
+      wx:key="key"
+      class="oc-btn {{item.type}}"
+      hover-class="oc-press"
+      data-key="{{item.key}}"
+      catchtap="onAction"
+    >
+      {{item.text}}
+    </view>
+  </view>
+</view>

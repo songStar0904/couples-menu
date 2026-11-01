@@ -1,0 +1,7 @@
+.seg-wrap {
+  margin-bottom: 24rpx;
+}
+order-card {
+  display: block;
+  margin-bottom: 24rpx;
+}

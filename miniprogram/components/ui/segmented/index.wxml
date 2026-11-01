@@ -1,0 +1,18 @@
+<view class="seg">
+  <view
+    class="thumb"
+    style="width: {{100 / labels.length}}%; transform: translateX({{index * 100}}%);"
+  ></view>
+  <view
+    wx:for="{{labels}}"
+    wx:key="*this"
+    class="seg-item {{index === idx ? 'on' : ''}}"
+    wx:for-item="label"
+    wx:for-index="idx"
+    data-index="{{idx}}"
+    hover-class="seg-press"
+    bindtap="onTap"
+  >
+    {{label}}
+  </view>
+</view>

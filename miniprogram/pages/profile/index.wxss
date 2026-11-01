@@ -1,0 +1,126 @@
+.user-card {
+  background: var(--cm-gradient);
+  border-radius: 32rpx;
+  padding: 40rpx 32rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 12rpx 32rpx -8rpx var(--cm-primary);
+  transition: transform 0.15s;
+}
+.uc-avatar {
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.uc-img {
+  width: 100%;
+  height: 100%;
+}
+.uc-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cm-primary);
+}
+.uc-main {
+  margin: 0 22rpx;
+}
+.uc-name {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+.uc-motto {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+.uc-edit {
+  display: flex;
+  align-items: center;
+  color: var(--cm-text-3);
+}
+.mt {
+  margin-top: 24rpx;
+}
+.cp-icon {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 20rpx;
+  background: var(--cm-primary-soft);
+  color: var(--cm-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+.cp-main {
+  min-width: 0;
+}
+.cp-title {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+.cp-sub {
+  font-size: 24rpx;
+  color: var(--cm-text-2);
+  margin-top: 4rpx;
+}
+.cp-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--cm-text-3);
+}
+.cp-go {
+  background: var(--cm-primary-soft);
+  color: var(--cm-primary);
+  font-size: 24rpx;
+  font-weight: 600;
+  padding: 10rpx 24rpx;
+  border-radius: 999rpx;
+}
+.cp-points {
+  display: flex;
+  align-items: center;
+  color: var(--cm-primary);
+  font-size: 30rpx;
+  font-weight: 700;
+}
+.cp-points-ic {
+  display: flex;
+  align-items: center;
+  margin-right: 4rpx;
+}
+.menu-list {
+  padding: 8rpx 0;
+}
+.divider {
+  height: 1rpx;
+  background: var(--cm-line);
+  margin: 0 28rpx;
+}
+.share-btn {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  border-radius: 0;
+  line-height: inherit;
+}
+.share-btn::after {
+  border: none;
+}
+.version {
+  text-align: center;
+  color: var(--cm-text-3);
+  font-size: 22rpx;
+  margin-top: 40rpx;
+}

@@ -1,0 +1,40 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="3" />
+
+  <block wx:else>
+    <view class="cover" style="{{coverStyle}}">
+      <view class="cover-emoji"><ui-icon name="{{coverIcon}}" size="96" /></view>
+    </view>
+    <view class="head">
+      <view class="head-title">{{tpl.title}}</view>
+      <view class="head-sub">{{tpl.subtitle}}</view>
+      <view class="head-tags" wx:if="{{tpl.tags.length}}">
+        <text class="head-tag" wx:for="{{tpl.tags}}" wx:key="*this"># {{item}}</text>
+      </view>
+    </view>
+
+    <view class="card mt">
+      <view class="list-title">包含 {{tpl.items.length}} 道菜品</view>
+      <view wx:for="{{items}}" wx:key="index" class="item">
+        <view class="item-emoji"><ui-icon name="{{item.icon}}" size="40" /></view>
+        <view class="flex-1 item-main">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-cat">{{item.category}}</view>
+          <view wx:if="{{item.desc}}" class="item-desc">{{item.desc}}</view>
+        </view>
+        <view class="item-price">
+          <view class="item-price-ic"><ui-icon name="heart-fill" size="22" /></view>{{item.price}}
+        </view>
+      </view>
+    </view>
+
+    <view class="import-btn">
+      <ui-button size="lg" loading="{{importing}}" bind:tap="onImport">
+        <view class="import-row"><view class="import-row-icon"><ui-icon name="download" size="32" /></view>一键导入我的菜单</view>
+      </ui-button>
+    </view>
+  </block>
+
+  <ui-dialog id="dialog" />
+  <view class="safe-bottom"></view>
+</view>

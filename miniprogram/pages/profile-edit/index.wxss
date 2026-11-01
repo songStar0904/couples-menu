@@ -1,0 +1,39 @@
+.avatar-btn {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  line-height: inherit;
+}
+.avatar-btn::after {
+  border: none;
+}
+.avatar-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+.avatar-empty {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: var(--cm-bg);
+  border: 2rpx dashed var(--cm-text-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-emoji {
+  font-size: 52rpx;
+}
+.avatar-tip {
+  font-size: 20rpx;
+  color: var(--cm-text-2);
+  margin-top: 6rpx;
+}
+.save {
+  margin-top: 40rpx;
+}

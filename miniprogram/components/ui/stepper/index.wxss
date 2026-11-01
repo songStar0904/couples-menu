@@ -1,0 +1,30 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  background: var(--cm-bg);
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+.op {
+  width: 64rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  color: var(--cm-primary);
+  transition: opacity 0.15s;
+}
+.op-press {
+  opacity: 0.6;
+}
+.off {
+  color: var(--cm-text-3);
+}
+.val {
+  min-width: 72rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--cm-text);
+}

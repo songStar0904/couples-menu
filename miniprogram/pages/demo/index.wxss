@@ -1,0 +1,17 @@
+.sec {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin: 36rpx 4rpx 16rpx;
+}
+.gap {
+  height: 20rpx;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.dialog-result {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: var(--cm-text-2);
+}

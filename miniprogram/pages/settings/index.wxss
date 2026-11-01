@@ -1,0 +1,42 @@
+.mt {
+  margin-top: 24rpx;
+}
+.set-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.set-title-ic {
+  display: flex;
+  align-items: center;
+  margin-right: 8rpx;
+  color: var(--cm-primary);
+}
+.set-row {
+  display: flex;
+  align-items: center;
+  padding: 22rpx 0;
+}
+.set-row-title {
+  font-size: 29rpx;
+}
+.set-row-sub {
+  font-size: 22rpx;
+  color: var(--cm-text-2);
+  margin-top: 6rpx;
+}
+.set-arrow {
+  font-size: 36rpx;
+  color: var(--cm-text-3);
+}
+.divider {
+  height: 1rpx;
+  background: var(--cm-line);
+}
+.set-note {
+  font-size: 22rpx;
+  color: var(--cm-text-3);
+  margin-top: 16rpx;
+}

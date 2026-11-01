@@ -1,0 +1,8 @@
+<view class="empty">
+  <view class="empty-badge"><ui-icon name="{{icon}}" size="56" /></view>
+  <view class="empty-text">{{text}}</view>
+  <view wx:if="{{sub}}" class="empty-sub">{{sub}}</view>
+  <view class="empty-action">
+    <slot></slot>
+  </view>
+</view>

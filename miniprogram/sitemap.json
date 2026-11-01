@@ -1,0 +1,9 @@
+{
+  "desc": "私有应用，不允许被搜索到",
+  "rules": [
+    {
+      "action": "disallow",
+      "page": "*"
+    }
+  ]
+}

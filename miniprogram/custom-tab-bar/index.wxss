@@ -1,0 +1,50 @@
+.bar {
+  --cm-primary: #fa6e93;
+  --cm-primary-soft: #ffeef3;
+  --cm-text-2: #9a97a6;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  box-shadow: 0 -4rpx 24rpx rgba(60, 40, 60, 0.06);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 999;
+}
+.bar.theme-blue {
+  --cm-primary: #5e97f6;
+}
+.bar-inner {
+  display: flex;
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .bar-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+}
+.bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 14rpx 0 10rpx;
+  color: var(--cm-text-2);
+  transition: color 0.2s;
+}
+.bar-icon {
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.bar-item.on .bar-icon {
+  transform: translateY(-4rpx) scale(1.1);
+}
+.bar-text {
+  font-size: 22rpx;
+  margin-top: 6rpx;
+}
+.bar-item.on {
+  color: var(--cm-primary);
+  font-weight: 600;
+}

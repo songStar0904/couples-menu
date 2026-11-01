@@ -1,0 +1,165 @@
+/* ========================================
+   情侣菜单 · 全局样式与设计系统
+   变量规范见 docs/03-UI设计规范.md
+   ======================================== */
+
+page {
+  /* 中性色 */
+  --cm-bg: #F8F7FA;
+  --cm-card: #FFFFFF;
+  --cm-text: #33323E;
+  --cm-text-2: #9A97A6;
+  --cm-text-3: #C2BFCC;
+  --cm-line: #F1EFF3;
+  --cm-success: #4CC3A5;
+  --cm-warning: #FFA24B;
+  --cm-danger: #F4655F;
+  --cm-mask: rgba(40, 30, 45, 0.45);
+  --cm-shadow: 0 6rpx 24rpx rgba(60, 40, 60, 0.06);
+
+  /* 主题色：默认 🌸 暖粉 */
+  --cm-primary: #FA6E93;
+  --cm-primary-deep: #E8527F;
+  --cm-primary-soft: #FFEEF3;
+  --cm-gradient: linear-gradient(135deg, #FF8FA9 0%, #FBC2D4 100%);
+  --cm-on-primary: #FFFFFF;
+
+  background: var(--cm-bg);
+  color: var(--cm-text);
+  font-size: 30rpx;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 💙 雾蓝主题：页面根节点加 .theme-blue 即可切换 */
+.theme-blue {
+  --cm-primary: #5E97F6;
+  --cm-primary-deep: #3F7CE0;
+  --cm-primary-soft: #EAF2FF;
+  --cm-gradient: linear-gradient(135deg, #6EA8FA 0%, #A5CDFB 100%);
+}
+
+/* ===== 页面骨架 ===== */
+.page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx;
+  box-sizing: border-box;
+}
+.page-flush {
+  padding: 0;
+}
+.safe-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 24rpx);
+}
+/* tab 页底部留白需覆盖自定义 tabBar（约 110rpx 高），否则最后一张卡会被遮挡 */
+.tab-safe-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 150rpx);
+}
+
+/* ===== 通用排版 ===== */
+.row {
+  display: flex;
+  align-items: center;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-1 {
+  flex: 1;
+  min-width: 0;
+}
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ellipsis2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.hr {
+  height: 1rpx;
+  background: var(--cm-line);
+  border: none;
+  margin: 24rpx 0;
+}
+
+/* ===== 区块标题 ===== */
+.section-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: var(--cm-text);
+  margin: 36rpx 4rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+.section-title .more {
+  margin-left: auto;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: var(--cm-text-2);
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: var(--cm-card);
+  border-radius: 28rpx;
+  padding: 28rpx;
+  box-shadow: var(--cm-shadow);
+}
+
+/* ===== 按压反馈 ===== */
+.press {
+  transform: scale(0.98);
+  opacity: 0.85;
+}
+
+/* ===== 渐变文字（余额/天数等强调数字）===== */
+.grad-num {
+  background: var(--cm-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+/* ===== 表单 ===== */
+.form-label {
+  font-size: 26rpx;
+  color: var(--cm-text-2);
+  margin: 28rpx 4rpx 12rpx;
+}
+.input-box {
+  background: var(--cm-bg);
+  border-radius: 24rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+}
+.textarea-box {
+  background: var(--cm-bg);
+  border-radius: 24rpx;
+  padding: 24rpx;
+  width: auto;
+  min-height: 160rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+/* ===== 空态/加载通用间距 ===== */
+.loading-foot {
+  text-align: center;
+  color: var(--cm-text-3);
+  font-size: 24rpx;
+  padding: 24rpx 0;
+}
+
+/* ===== 宽屏适配（平板 / 横屏 / PC 预览）：内容限宽居中 ===== */
+@media (min-width: 640px) {
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+}

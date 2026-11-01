@@ -1,0 +1,80 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="2" />
+
+  <block wx:else>
+    <!-- 余额卡 -->
+    <view class="balance-card">
+      <view class="bc-label">当前心意值</view>
+      <view class="bc-num"><view class="bc-heart"><ui-icon name="heart-fill" size="44" /></view>{{overview.balance}}</view>
+      <view class="bc-row">
+        <text class="bc-chip"><view class="bc-chip-ic"><ui-icon name="flame" size="24" /></view>连续签到 {{overview.streak}} 天</text>
+        <text class="bc-chip"><view class="bc-chip-ic"><ui-icon name="calendar" size="24" /></view>本月签到 {{overview.monthCount}} 天</text>
+      </view>
+    </view>
+
+    <view class="seg-wrap">
+      <ui-segmented options="{{['签到', '明细']}}" value="{{tab}}" bind:change="onTabChange" />
+    </view>
+
+    <!-- 签到 -->
+    <block wx:if="{{tab === 'sign'}}">
+      <view class="card">
+        <view class="row">
+          <view class="flex-1">
+            <view class="sign-title">每日签到</view>
+            <view class="sign-sub">连续 7 天额外 +10</view>
+          </view>
+          <view wx:if="{{overview.todaySigned}}" class="sign-done">今日已签到 ✓</view>
+          <view wx:else class="sign-btn" hover-class="press" bindtap="onSign">签到 +5</view>
+        </view>
+        <view class="cal-wrap">
+          <view class="cal-nav">
+            <view class="cal-arrow" hover-class="press" bindtap="onPrevMonth">‹</view>
+            <view class="cal-title">{{calYear}} 年 {{calMonth}} 月</view>
+            <view class="cal-arrow" hover-class="press" bindtap="onNextMonth">›</view>
+          </view>
+          <sign-calendar
+            year="{{calYear}}"
+            month="{{calMonth}}"
+            signed="{{signDates}}"
+            today="{{overview.today}}"
+          />
+        </view>
+      </view>
+
+      <!-- 任务 -->
+      <view class="card mt24">
+        <view class="task-title"><view class="task-title-ic"><ui-icon name="heart-fill" size="28" /></view>赚心意值</view>
+        <view wx:for="{{overview.tasks}}" wx:key="key" class="task-item">
+          <view class="flex-1">
+            <view class="task-name">{{item.title}}</view>
+            <view class="task-desc">{{item.desc}}</view>
+          </view>
+          <view wx:if="{{item.done}}" class="task-done">已完成</view>
+          <view wx:elif="{{item.reward}}" class="task-reward">+{{item.reward}}</view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 明细 -->
+    <block wx:else>
+      <block wx:if="{{ledgerList.length}}">
+        <view class="card">
+          <view wx:for="{{ledgerList}}" wx:key="_id" class="ledger-item">
+            <view class="flex-1">
+              <view class="ledger-title">{{item.title}}</view>
+              <view class="ledger-time">{{item.timeText}}</view>
+            </view>
+            <view class="ledger-delta {{item.delta >= 0 ? 'in' : 'out'}}">
+              {{item.delta >= 0 ? '+' : ''}}{{item.delta}}
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{ledgerFinished}}" class="loading-foot">— 到底啦 —</view>
+      </block>
+      <ui-empty wx:else icon="leaf" text="还没有收支记录" sub="点一单、签个到，心意就会流动起来" />
+    </block>
+  </block>
+
+  <view class="safe-bottom"></view>
+</view>

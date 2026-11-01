@@ -1,0 +1,73 @@
+<view class="page {{themeClass}}">
+  <view class="sec">按钮 Button</view>
+  <view class="card">
+    <ui-button bind:tap="onButtonTap">主要按钮 lg</ui-button>
+    <view class="gap"></view>
+    <ui-button type="soft" bind:tap="onButtonTap">柔和按钮</ui-button>
+    <view class="gap"></view>
+    <ui-button type="ghost" bind:tap="onButtonTap">幽灵按钮</ui-button>
+    <view class="gap"></view>
+    <ui-button type="danger" bind:tap="onButtonTap">危险按钮</ui-button>
+    <view class="gap"></view>
+    <ui-button size="sm" bind:tap="onButtonTap">小按钮 sm</ui-button>
+    <view class="gap"></view>
+    <ui-button loading>加载中</ui-button>
+  </view>
+
+  <view class="sec">分段器 Segmented</view>
+  <view class="card">
+    <ui-segmented options="{{[{label: '去点单', value: 'a'}, {label: '我的菜单', value: 'b'}]}}" value="{{segValue}}" bind:change="onSeg" />
+  </view>
+
+  <view class="sec">标签 Tag / 徽标 Badge / 价格 Price</view>
+  <view class="card row wrap" style="gap: 16rpx;">
+    <ui-tag type="primary">primary</ui-tag>
+    <ui-tag type="soft">soft</ui-tag>
+    <ui-tag type="success">success</ui-tag>
+    <ui-tag type="warning">warning</ui-tag>
+    <ui-tag type="danger">danger</ui-tag>
+    <ui-tag type="line">line</ui-tag>
+    <ui-tag type="soft" size="sm">小标签</ui-tag>
+    <ui-badge count="99+" />
+    <ui-badge dot />
+    <ui-price value="66" size="lg" />
+    <ui-price value="0" free />
+  </view>
+
+  <view class="sec">步进器 Stepper</view>
+  <view class="card">
+    <ui-stepper value="{{stepValue}}" min="0" max="99" bind:change="onStep" />
+  </view>
+
+  <view class="sec">单元格 Cell</view>
+  <view class="card" style="padding: 0;">
+    <ui-cell icon="📖" title="菜单" label="副标题说明" arrow bind:tap="onCellTap" />
+    <ui-cell icon="❤️" title="带右侧内容" value="66" arrow bind:tap="onCellTap" />
+  </view>
+
+  <view class="sec">心意值胶囊 PointsBadge</view>
+  <view class="card">
+    <points-badge value="520" bind:tap="onBadgeTap" />
+  </view>
+
+  <view class="sec">空状态 Empty</view>
+  <view class="card">
+    <ui-empty emoji="🍽️" text="菜单还空着" sub="上一道拿手菜吧" />
+  </view>
+
+  <view class="sec">骨架屏 Skeleton</view>
+  <view class="card">
+    <ui-button type="soft" size="sm" bind:tap="onToggleSkeleton">{{showSkeleton ? '关闭' : '展示'}}骨架屏</ui-button>
+    <view wx:if="{{showSkeleton}}" class="gap"></view>
+    <ui-skeleton wx:if="{{showSkeleton}}" type="list" rows="2" />
+  </view>
+
+  <view class="sec">对话框 Dialog</view>
+  <view class="card">
+    <ui-button bind:tap="onDialog">打开对话框</ui-button>
+    <view wx:if="{{dialogText}}" class="dialog-result">{{dialogText}}</view>
+  </view>
+
+  <ui-dialog id="dialog" />
+  <view class="safe-bottom"></view>
+</view>

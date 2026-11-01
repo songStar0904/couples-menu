@@ -1,0 +1,131 @@
+<view class="page page-flush {{themeClass}}">
+  <view class="menu-head">
+    <ui-segmented options="{{['去点单', '我的菜单']}}" value="{{view}}" bind:change="onViewChange" />
+  </view>
+
+  <ui-skeleton wx:if="{{loading}}" type="list" rows="4" />
+
+  <block wx:else>
+    <!-- ===== 去点单（伴侣菜单）===== -->
+    <block wx:if="{{view === 'partner'}}">
+      <block wx:if="{{couple}}">
+        <view wx:if="{{partnerMenu && partnerMenu.menuClosed}}" class="closed-banner">
+          <view class="cb-ic"><ui-icon name="moon" size="30" /></view>{{partnerMenu.partner.nickname || 'TA'}} 今天休息，菜单暂不接单
+        </view>
+        <block wx:if="{{groups.length}}">
+          <view class="pm">
+            <scroll-view scroll-y class="pm-nav" enhanced show-scrollbar="{{false}}">
+              <view
+                wx:for="{{groups}}"
+                wx:key="name"
+                class="pm-nav-item {{activeCategory === item.name ? 'on' : ''}}"
+                data-name="{{item.name}}"
+                bindtap="onCategoryTap"
+              >
+                <view class="pm-nav-icon"><ui-icon name="{{item.icon}}" size="36" /></view>
+                <text class="pm-nav-name">{{item.name}}</text>
+              </view>
+            </scroll-view>
+            <scroll-view scroll-y scroll-into-view="{{intoView}}" scroll-with-animation class="pm-list" enhanced show-scrollbar="{{false}}">
+              <view wx:for="{{groups}}" wx:key="name" id="cat-{{index}}" class="pm-group">
+                <view class="pm-cat-title">
+                  <view class="pm-cat-ic"><ui-icon name="{{item.icon}}" size="30" /></view>{{item.name}} <text class="pm-cat-count">{{item.dishes.length}}</text>
+                </view>
+                <dish-card
+                  wx:for="{{item.dishes}}"
+                  wx:for-item="dish"
+                  wx:key="_id"
+                  dish="{{dish}}"
+                  actionText="点单"
+                  bind:action="onOrderTap"
+                />
+              </view>
+              <view style="height: 200rpx;"></view>
+            </scroll-view>
+          </view>
+        </block>
+        <block wx:else>
+          <ui-empty icon="bento" text="{{partnerMenu && partnerMenu.partner.nickname || 'TA'}} 的菜单还空着" sub="去发现页挑一份模板，分享给 TA 一起搭建小馆吧">
+            <ui-button size="sm" bind:tap="onPartnerEmptyAction">去发现找灵感</ui-button>
+          </ui-empty>
+        </block>
+      </block>
+      <block wx:else>
+        <ui-empty icon="users" text="还没有和 TA 绑定" sub="绑定伴侣后就能看 TA 的专属菜单啦">
+          <ui-button size="sm" bind:tap="goBind">去绑定</ui-button>
+        </ui-empty>
+      </block>
+    </block>
+
+    <!-- ===== 我的菜单（管理）===== -->
+    <block wx:else>
+      <view class="mine-head">
+        <view class="mine-stats" hover-class="press" bindtap="goStats">
+          <view class="mine-stats-num">{{myMenu.stats.soldCount || 0}}</view>
+          <view class="mine-stats-label">累计被点</view>
+        </view>
+        <view class="mine-closed card">
+          <view class="row">
+            <view class="mc-ic"><ui-icon name="moon" size="40" /></view>
+            <view class="flex-1">
+              <view class="mine-closed-title">今日休息</view>
+              <view class="mine-closed-sub">开启后 TA 暂时不能点单</view>
+            </view>
+            <switch checked="{{myMenu.menuClosed}}" color="#FA6E93" bindchange="onToggleClosed" />
+          </view>
+        </view>
+        <view class="mine-actions">
+          <view class="mine-cat-btn" hover-class="press" bindtap="openCatDialog">
+            <view class="mc-btn-ic"><ui-icon name="folder" size="28" /></view>分类管理
+          </view>
+        </view>
+      </view>
+
+      <block wx:if="{{myGroups.length}}">
+        <view wx:for="{{myGroups}}" wx:key="name" class="pm-group">
+          <view class="pm-cat-title">
+            <view class="pm-cat-ic"><ui-icon name="{{item.icon}}" size="30" /></view>{{item.name}} <text class="pm-cat-count">{{item.dishes.length}}</text>
+          </view>
+          <dish-card
+            wx:for="{{item.dishes}}"
+            wx:for-item="dish"
+            wx:key="_id"
+            dish="{{dish}}"
+            actionText="{{dish.status === 'on' ? '下架' : '上架'}}"
+            bind:tap="onMyDishTap"
+            bind:action="onMyDishAction"
+          />
+        </view>
+      </block>
+      <block wx:else>
+        <ui-empty icon="pan" text="你的菜单还空着" sub="上一道拿手菜，或一份心意服务">
+          <ui-button size="sm" bind:tap="onAddDish">＋ 创建第一道菜品</ui-button>
+        </ui-empty>
+      </block>
+
+      <view wx:if="{{myGroups.length}}" class="mine-add" hover-class="press" bindtap="onAddDish">＋ 新建菜品</view>
+      <view style="height: 200rpx;"></view>
+    </block>
+  </block>
+
+  <!-- 分类管理弹层 -->
+  <view wx:if="{{catDialogShow}}" class="cat-mask" bindtap="closeCatDialog" catchtouchmove="noop">
+    <view class="cat-panel" catchtap="noop">
+      <view class="cat-title">
+        <view class="cat-title-ic"><ui-icon name="folder" size="30" /></view>分类管理
+      </view>
+      <scroll-view scroll-y class="cat-list" enhanced show-scrollbar="{{false}}">
+        <view wx:for="{{myMenu.categories}}" wx:key="name" class="cat-item">
+          <view class="cat-item-icon"><ui-icon name="{{item.icon || 'sparkle'}}" size="32" /></view>
+          <text class="flex-1">{{item.name}}</text>
+          <text class="cat-op" data-name="{{item.name}}" catchtap="onRenameCat">改名</text>
+          <text class="cat-op del" data-name="{{item.name}}" catchtap="onDeleteCat">删除</text>
+        </view>
+      </scroll-view>
+      <view class="cat-tip">提示：在创建菜品时输入新分类名即可自动创建</view>
+    </view>
+  </view>
+
+  <ui-dialog id="dialog" />
+  <view class="tab-safe-bottom"></view>
+</view>

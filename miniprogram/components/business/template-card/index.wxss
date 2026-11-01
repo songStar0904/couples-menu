@@ -1,0 +1,60 @@
+.tc {
+  background: var(--cm-card);
+  border-radius: 28rpx;
+  overflow: hidden;
+  box-shadow: var(--cm-shadow);
+  transition: transform 0.15s, opacity 0.15s;
+}
+.tc-press {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+.tc-cover {
+  height: 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.tc-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.tc-count {
+  position: absolute;
+  right: 16rpx;
+  bottom: 16rpx;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--cm-text);
+  font-size: 20rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+}
+.tc-body {
+  padding: 22rpx 24rpx 26rpx;
+}
+.tc-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--cm-text);
+}
+.tc-sub {
+  font-size: 24rpx;
+  color: var(--cm-text-2);
+  margin-top: 6rpx;
+}
+.tc-tags {
+  margin-top: 14rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+.tc-tag {
+  font-size: 20rpx;
+  color: var(--cm-primary);
+  background: var(--cm-primary-soft);
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+}

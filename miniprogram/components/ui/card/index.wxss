@@ -1,0 +1,25 @@
+.uc {
+  background: var(--cm-card);
+  border-radius: 28rpx;
+  padding: 28rpx;
+  box-shadow: var(--cm-shadow);
+}
+.uc-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.flex1 {
+  flex: 1;
+  min-width: 0;
+}
+.uc-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--cm-text);
+}
+.uc-sub {
+  font-size: 24rpx;
+  color: var(--cm-text-2);
+  margin-top: 4rpx;
+}

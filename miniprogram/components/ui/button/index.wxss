@@ -1,0 +1,79 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 88rpx;
+  border-radius: 24rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.btn::after {
+  border: none;
+}
+.btn-hover {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+.is-disabled {
+  opacity: 0.5;
+}
+
+/* 尺寸 */
+.lg {
+  height: 96rpx;
+  font-size: 32rpx;
+}
+.md {
+  height: 88rpx;
+  font-size: 30rpx;
+}
+.sm {
+  height: 60rpx;
+  font-size: 26rpx;
+  border-radius: 999rpx;
+  width: auto;
+  padding: 0 32rpx;
+  font-weight: 500;
+}
+
+/* 类型 */
+.primary {
+  background: var(--cm-gradient);
+  color: var(--cm-on-primary);
+  box-shadow: 0 8rpx 20rpx -6rpx var(--cm-primary);
+}
+.soft {
+  background: var(--cm-primary-soft);
+  color: var(--cm-primary);
+}
+.danger {
+  background: #fdecec;
+  color: var(--cm-danger);
+}
+.ghost {
+  background: transparent;
+  border: 2rpx solid var(--cm-line);
+  color: var(--cm-text-2);
+}
+
+.spinner {
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  border: 4rpx solid currentColor;
+  border-top-color: transparent;
+  margin-right: 12rpx;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "couple",
+  "version": "1.0.0",
+  "description": "情侣关系：邀请口令/绑定/解绑/动态",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

@@ -1,0 +1,17 @@
+<view class="cal">
+  <view class="cal-head">
+    <view class="cal-week" wx:for="{{weekHeads}}" wx:key="*this">{{item}}</view>
+  </view>
+  <view class="cal-grid">
+    <block wx:for="{{cells}}" wx:key="index">
+      <view wx:if="{{!item.day}}" class="cal-cell blank"></view>
+      <view
+        wx:else
+        class="cal-cell {{item.isSigned ? 'signed' : ''}} {{item.isToday ? 'today' : ''}}"
+      >
+        <text wx:if="{{item.isSigned}}" class="cal-mark">✓</text>
+        <text wx:else>{{item.day}}</text>
+      </view>
+    </block>
+  </view>
+</view>

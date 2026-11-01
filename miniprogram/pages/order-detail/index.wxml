@@ -1,0 +1,87 @@
+<view class="page {{themeClass}}">
+  <ui-skeleton wx:if="{{loading}}" type="detail" rows="2" />
+  <block wx:else>
+    <!-- 状态卡 -->
+    <view class="status-card">
+      <view class="status-emoji"><ui-icon name="{{statusInfo.icon}}" size="88" /></view>
+      <view class="status-text">{{statusInfo.text}}</view>
+      <view class="status-sub" wx:if="{{role === 'seller'}}">我是主厨 · {{order.buyerName}} 点的单</view>
+      <view class="status-sub" wx:else>我是食客 · 主厨 {{order.sellerName}}</view>
+    </view>
+
+    <!-- 菜品信息 -->
+    <view class="card mt row">
+      <view class="d-media">
+        <image wx:if="{{order.dishImage}}" src="{{order.dishImage}}" mode="aspectFill" class="d-img" />
+        <view wx:else class="d-emoji"><ui-icon name="{{order.dishType === 'service' ? 'gift' : 'pan'}}" size="48" /></view>
+      </view>
+      <view class="flex-1 d-main">
+        <view class="d-name">{{order.dishName}}</view>
+        <view wx:if="{{order.wishDate}}" class="d-row">
+          <view class="d-row-ic"><ui-icon name="calendar" size="26" /></view>期望 {{order.wishDate}}
+        </view>
+        <view wx:if="{{order.note}}" class="d-row">
+          <view class="d-row-ic"><ui-icon name="pencil" size="26" /></view>{{order.note}}
+        </view>
+      </view>
+      <ui-price value="{{order.price}}" size="lg" free="{{!order.price}}" />
+    </view>
+
+    <!-- 进度时间线 -->
+    <view class="card mt">
+      <view class="tl-item" wx:for="{{steps}}" wx:key="index">
+        <view class="tl-emoji"><ui-icon name="{{item.icon}}" size="36" /></view>
+        <view class="flex-1 tl-text">{{item.text}}</view>
+        <text class="tl-time">{{item.time}}</text>
+      </view>
+    </view>
+
+    <!-- 评价展示 -->
+    <view wx:if="{{order.review && order.review.rating}}" class="card mt">
+      <view class="review-title">
+        <view class="review-title-ic"><ui-icon name="chat" size="30" /></view>{{order.buyerName}} 的评价
+      </view>
+      <view class="stars">
+        <view wx:for="{{[1,2,3,4,5]}}" wx:key="*this" class="star {{item <= order.review.rating ? 'on' : ''}}">
+          <ui-icon name="heart-fill" size="1em" />
+        </view>
+      </view>
+      <view wx:if="{{order.review.message}}" class="review-msg">{{order.review.message}}</view>
+    </view>
+
+    <!-- 评价表单 -->
+    <view wx:if="{{canReview}}" class="card mt">
+      <view class="review-title">感谢 TA 一下</view>
+      <view class="stars">
+        <view
+          wx:for="{{[1,2,3,4,5]}}"
+          wx:key="*this"
+          class="star big {{item <= rating ? 'on' : ''}}"
+          data-v="{{item}}"
+          bindtap="onRate"
+        >
+          <ui-icon name="heart-fill" size="1em" />
+        </view>
+      </view>
+      <textarea class="textarea-box" value="{{reviewText}}" placeholder="说句悄悄话吧（可选）" maxlength="60" bindinput="onReviewText" />
+      <view class="review-submit">
+        <ui-button loading="{{submittingReview}}" bind:tap="onSubmitReview">发送感谢</ui-button>
+      </view>
+    </view>
+
+    <!-- 操作区 -->
+    <view wx:if="{{actions.length}}" class="detail-actions">
+      <view
+        wx:for="{{actions}}"
+        wx:key="key"
+        class="da-btn {{item.type}}"
+        hover-class="press"
+        data-key="{{item.key}}"
+        bindtap="onAction"
+      >{{item.text}}</view>
+    </view>
+  </block>
+
+  <ui-dialog id="dialog" />
+  <view class="safe-bottom"></view>
+</view>
